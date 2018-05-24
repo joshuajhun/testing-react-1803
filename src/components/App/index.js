@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Card from '../Card.js';
+import Form from '../Form';
+import IdeaContainer from '../IdeaContainer';
 
 class App extends Component {
   constructor() {
@@ -7,6 +8,7 @@ class App extends Component {
     this.state = {
       ideas: []
     }
+    this.addIdea = this.addIdea.bind(this);
   }
 
   addIdea(idea) {
@@ -20,7 +22,12 @@ class App extends Component {
   }
 
   render() {
-    <Card addIdea={ this.addIdea } />
+    return (
+      <div>
+        <Form addIdea={ this.addIdea } />
+        <IdeaContainer />
+      </div>
+    );
   }
 };
 

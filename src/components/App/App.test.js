@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from '../App';
+import Form from '../Form';
+import IdeaContainer from '../IdeaContainer';
 
 describe('App unit tests', () => {
 
@@ -17,6 +19,7 @@ describe('App unit tests', () => {
   });
   describe('App class methods', () => {
     test('when Apps addIdea function is invoked it should add a single idea to the state', () => {
+ 
       const expectedState = [ { id:1, title: 'some title', body: 'some body' }];
 
       renderedApp.instance().addIdea({ id: 1, title: 'some title', body: 'some body' });
@@ -39,5 +42,19 @@ describe('App unit tests', () => {
 
       expect(actualState).toEqual(expectedState);
    });
+  });
+  describe('App UI tests', () => {
+    test('App should render a single Form component', () => {
+      const expectedFormLength = 1;
+      const actualFormLength = renderedApp.find(Form).length;
+
+      expect(actualFormLength).toBe(expectedFormLength);
+    });
+    test('App should render a single IdeaContainer component' , () => {
+      const expectedIdeaContainerLength = 1;
+      const actualIdeaContainerLength = renderedApp.find(IdeaContainer).length;
+
+      expect(actualIdeaContainerLength).toBe(expectedIdeaContainerLength);
+    });
   });
 });
